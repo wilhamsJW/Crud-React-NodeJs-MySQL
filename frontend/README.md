@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-Exatamento com: `npx create-react-app backend`
+Exatamento com: `npx create-react-app frontend`
 
 ## Available Scripts
 
