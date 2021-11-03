@@ -4,13 +4,18 @@ import './App.css'
 function App() {
 
   const [values, setValues] = useState();
-  // console.log(setValues);
+  console.log(values);
 
   // [value.target.name]: value.target.value, -> está passando os valores para 0 "values"
   // do useState() acima
   const handleChangeValues = (value) => {
     setValues(prevValue => ({
+      // ...prevValue -> retornando o estado dos valores aprq ue o objeto possa ser criado
+      // o bjeto com todos os valores do input, sem isso cria um objeto diferente com os valores 
+      // e com ele cria um único objeto com todos os valores dos inputs
       ...prevValue,
+      // Abaixo estou criando um objeto com a chave "value.target.name" e o valor " value.target.value"
+      // dessa forma criará uma chave com o nome da var name dentro do inpute com o valor que há no input
       [value.target.name]: value.target.value,
     }))
   }
@@ -22,7 +27,7 @@ function App() {
   return (
     <div className="app--container">
       <div className="register--container">
-        <h1 className="register--title">Gerenciamento de Usuários</h1>
+        <h1 className="register--title">Loja de Jogos</h1>
         <input
           type="text"
           name="name"
@@ -32,7 +37,7 @@ function App() {
         />
         <input
           type="text"
-          name="cost"
+          name="preco"
           placeholder="Preço"
           className="register--input"
           onChange={handleChangeValues}
