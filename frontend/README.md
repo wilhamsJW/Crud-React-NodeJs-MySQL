@@ -3,6 +3,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 Exatamento com: `npx create-react-app frontend`
 
+### Instalação do Axios
+yarn add axios
+
+### Instalação do Materia UI
+yarn add @material-ui/core
+
 ## Available Scripts
 
 In the project directory, you can run:

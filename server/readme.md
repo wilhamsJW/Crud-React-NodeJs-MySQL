@@ -7,9 +7,9 @@ Adicionado mysql, cors e nodemon
 
 ## 3º comando para instalar o express: `$ npm install express --save`
 
-## 4º comando para rodar o servidor: `node index.js`
+## 4º comando para rodar o servidor sem atualizaçãoes automáticas: `node index.js`
 
-## 5º comando: `yarn dev` ou `npm run dev`
+## 5º comando para rodar servidor com atualizaçãoes automáticas: `yarn dev` ou `npm run dev`
 isso serve para que o servidor rode de forma automática sem ter que ficar reiniciando a cada alteração
 quem faz isso é a lib de desenvolvimento `nodemon` q foi instalada acima, para que o `nodemon` 
 escute todas as alterações do meu servidor vá no `package.json` (arquivo q fica todas as libs)

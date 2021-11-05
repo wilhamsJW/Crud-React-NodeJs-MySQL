@@ -1,10 +1,35 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import './App.css'
+import Axios from 'axios'
+import Card from "./componentes/cards";
 
 function App() {
 
   const [values, setValues] = useState();
-  console.log(values);
+  // const [listGames, setListGames] = useState();
+  var listGames = []
+  listGames = [
+    {
+      'id': '01',
+      'name': 'Paulo',
+      'price': '87,89',
+      'category': 'base'
+    },
+    {
+      'id': '02',
+      'name': 'Wilhams',
+      'price': '123,56',
+      'category': 'Principal'
+    },
+    {
+      'id': '03',
+      'name': 'ANtonua',
+      'price': '0,94',
+      'category': 'Juvenil'
+    },
+
+  ]
+
 
   // [value.target.name]: value.target.value, -> está passando os valores para 0 "values"
   // do useState() acima
@@ -21,8 +46,26 @@ function App() {
   }
 
   const handleClickButton = () => {
-    console.log('handleClickButton', values);
+    Axios.post("http://localhost:3023/register", {
+      name: values.name,
+      price: values.price,
+      category: values.category
+    }).then((res) => {
+      console.log(res);
+    })
   }
+
+  // A reuisição não está funcionando por conta de problemas com Mysql e minha máquina
+  // useEffect(() => {
+  //   Axios.get("http://localhost:3023/getCards")
+  // }, []).then((res) => {
+  //   // if (res == undefined) {
+  //   //   // setListGames(res.data)
+  //   //   return
+  //   // }
+
+  //   console.log('res');
+  // })
 
   return (
     <div className="app--container">
@@ -37,7 +80,7 @@ function App() {
         />
         <input
           type="text"
-          name="preco"
+          name="price"
           placeholder="Preço"
           className="register--input"
           onChange={handleChangeValues}
@@ -51,6 +94,19 @@ function App() {
         />
         <button className="register--button" onClick={() => handleClickButton()}>Cadastrar</button>
       </div>
+
+      {typeof listGames != 'undefined' && listGames.map((value) => {
+        return <Card
+          key={value.id}
+          // listCard={listGames}
+          name={value.name}
+          price={value.price}
+          category={value.category}
+        >
+        </Card>
+      })}
+
+
     </div>
   );
 

@@ -1,12 +1,55 @@
 const express = require("express");
 const app = express();
-const db = require("mysql")
+const mysql = require("mysql");
+const cors = require("cors");
 
-app.get('/', (req, res) => {
-    res.send("Runnig Server!")
+const db = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'crud'
 });
 
-app.listen(3001, () => {
+app.use(cors);
+app.use(express.json());
+
+app.post("/register", (req, res) => {
+    const { name } = req.body;
+    const { price } = req.body;
+    const { category } = req.body;
+
+    // ( ?,?,? ) -> mandando valores dinãmicos
+    let SQL = "INSERT INTO games ( name, price, category ) VALUES ( ?,?,? ) ";
+
+    db.query(SQL, [name, price, category], (error, result) =>{
+        console.log(error);
+    })
+});
+
+app.get("/getCards", (req, res) => {
+    let SQL = "SELECT * FROM games"
+
+    db.query(SQL, (err, result) => {
+        if (err) console.log(err);
+        else res.send(result)
+    })
+})
+
+// app.get('/', (req, res) => {
+//     let sql = 
+//         "INSERT INTO games (name, price, category) VALUES ('wILHAMS', '123', 'PROGRMAADOR' ) ";
+
+//     db.query(sql, (err, result) => {
+//         console.log('erroor', err);
+//     })    
+// });
+
+// Demonstração
+// app.get('/', (req, res) => {
+//     res.send("Runnig Server!")
+// });
+
+app.listen(3023, () => {
     console.log('running server...');
 });
 
