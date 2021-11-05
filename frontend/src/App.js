@@ -100,8 +100,10 @@ function App() {
           key={value.id}
           // listCard={listGames}
           name={value.name}
+          // id={values.idGames}
           price={value.price}
           category={value.category}
+          id={value.id}
         >
         </Card>
       })}
