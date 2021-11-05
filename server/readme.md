@@ -1,6 +1,6 @@
 ### Comando e algumas observações sobre o backend
 
-## Primeiro comando: `npm init -y`
+## 1º comando: `npm init -y`
 
 ## 2º comando: `yarn add mysql cors nodemon` 
 Adicionado mysql, cors e nodemon
