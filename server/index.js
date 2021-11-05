@@ -35,6 +35,29 @@ app.get("/getCards", (req, res) => {
     })
 })
 
+app.put("/edit", (req, res) => {
+    const { id } = req.body;
+    const { name } = req.body;
+    const { price } = req.body;
+    const { category } = req.body;
+
+    let SQL = "UPDATE games SET name = ? price = ?, category = ? WHERE idGames = ?";
+
+    db.query(SQL, [name, price, category, id], (err, result) => {
+        if(err) console.log(err);
+        else res.send(result)
+    })
+})
+
+app.delete("/delete/:id", (req, res) => {
+    const { id } = req.params;
+    let SQL = "DELETE FROM games WHERE id = ? ";
+    db.query(SQL, [id], (error, result) => {
+        if (error) console.log(error);
+        else res.send(result)
+    })
+})
+
 // app.get('/', (req, res) => {
 //     let sql = 
 //         "INSERT INTO games (name, price, category) VALUES ('wILHAMS', '123', 'PROGRMAADOR' ) ";
@@ -49,7 +72,7 @@ app.get("/getCards", (req, res) => {
 //     res.send("Runnig Server!")
 // });
 
-app.listen(3023, () => {
+app.listen(8888, () => {
     console.log('running server...');
 });
 
